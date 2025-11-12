@@ -1,13 +1,6 @@
-function goCheck(arr) {
-  let mySet = new Set();
-  let result = [];
+'use strict';
 
-  for (const obj of arr) {
-    if (!mySet.has(obj.id)) {
-      mySet.add(obj.id);
-      result.push(obj);
-    }
-  }
-
-  return result;
+function go(ds) {
+    ds = parseInt(ds.slice(1));
+    return Math.floor(Math.random() * ds + 1)
 }
