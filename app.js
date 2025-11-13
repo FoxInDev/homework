@@ -1,6 +1,9 @@
 'use strict';
 
-function go(ds) {
-    ds = parseInt(ds.slice(1));
-    return Math.floor(Math.random() * ds + 1)
+function calculateBirthday(dateBd) {
+    const now = new Date();
+    let FourteenYearsLater = new Date(dateBd);
+    FourteenYearsLater.setFullYear(FourteenYearsLater.getFullYear() + 14);
+
+    return FourteenYearsLater <= now;
 }
