@@ -1,13 +1,9 @@
-function goCheck(arr) {
-  let mySet = new Set();
-  let result = [];
+'use strict';
 
-  for (const obj of arr) {
-    if (!mySet.has(obj.id)) {
-      mySet.add(obj.id);
-      result.push(obj);
-    }
-  }
+function calculateBirthday(dateBd) {
+    const now = new Date();
+    let FourteenYearsLater = new Date(dateBd);
+    FourteenYearsLater.setFullYear(FourteenYearsLater.getFullYear() + 14);
 
-  return result;
+    return FourteenYearsLater <= now;
 }
