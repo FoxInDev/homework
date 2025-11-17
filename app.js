@@ -20,6 +20,9 @@ const Elf = function(name, language, spellType) {
     this.spellType = spellType;
 }
 
+Elf.prototype = Object.create(Character.prototype);
+Elf.prototype.constructor = Elf;
+
 Elf.prototype.castSpell = function() {
     console.log(`${this.name} создает заклинание: ${this.spellType}`);
 };
@@ -30,6 +33,3 @@ Orc.prototype.constructor = Orc;
 Orc.prototype.attack = function() {
     console.log(`${this.name} бьет ${this.weapon}`);
 }
-
-Elf.prototype = Object.create(Character.prototype);
-Elf.prototype.constructor = Elf;
