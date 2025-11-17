@@ -1,19 +1,35 @@
 'use strict';
-const timerEl = document.getElementById('timer');
 
-function updateTimer() {
-    const now = new Date();
-    const newYearDate = new Date(now.getFullYear() + 1, 0, 1);
-    const diff = newYearDate - now;
-
-    const seconds = Math.floor(diff / 1000) % 60;
-    const minutes = Math.floor(diff / (1000 * 60)) % 60;
-    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-    const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-    let months = Math.floor(totalDays / 30);
-    const days = totalDays % 30;
-    timerEl.innerHTML = `${months} месяцев, ${days} дней, ${hours} часов, ${minutes} минут, ${seconds} секунд`;
+const Character = function(race, name, language) {
+    this.race = race;
+    this.name = name;
+    this.language = language;
 }
 
-setInterval(updateTimer, 1000);
-updateTimer();
+Character.prototype.speak = function() {
+    console.log(this.language, this.name);
+}
+
+const Orc = function(name, language, weapon) {
+    Character.call(this, 'Орк', name, language);
+    this.weapon = weapon;
+}
+
+const Elf = function(name, language, spellType) {
+    Character.call(this, 'Эльф', name, language);
+    this.spellType = spellType;
+}
+
+Elf.prototype.castSpell = function() {
+    console.log(`${this.name} создает заклинание: ${this.spellType}`);
+};
+
+Orc.prototype = Object.create(Character.prototype);
+Orc.prototype.constructor = Orc;
+
+Orc.prototype.attack = function() {
+    console.log(`${this.name} бьет ${this.weapon}`);
+}
+
+Elf.prototype = Object.create(Character.prototype);
+Elf.prototype.constructor = Elf;
