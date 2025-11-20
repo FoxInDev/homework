@@ -1,35 +1,25 @@
 'use strict';
 
-const Character = function(race, name, language) {
-    this.race = race;
-    this.name = name;
-    this.language = language;
-}
+class Car {
+    #_marka;
+    #_model;
+    #_probeg;
 
-Character.prototype.speak = function() {
-    console.log(this.language, this.name);
-}
+    constructor(marka, model, probeg /* 1. Пробег как передача параметра, он должен совпадать с названием сеттера, чтобы всё сработало */) {
+        this.#_marka = marka;
+        this.#_model = model;
+        this.#_probeg = probeg /* 2. Вызываем сеттер для установки/валидации. Тут валидации не написал, она не нужна по тз  */;
+    }
 
-const Orc = function(name, language, weapon) {
-    Character.call(this, 'Орк', name, language);
-    this.weapon = weapon;
-}
+    get probeg() /* 3. Название сеттера совпадает с параметром */ {
+        return this.#_probeg;
+    }
 
-const Elf = function(name, language, spellType) {
-    Character.call(this, 'Эльф', name, language);
-    this.spellType = spellType;
-}
+    set probeg(value /* 4. Здесь назвал по другому, чтобы не было бесконечного цикла */) {
+        this.#_probeg = value;
+    }
 
-Elf.prototype = Object.create(Character.prototype);
-Elf.prototype.constructor = Elf;
-
-Elf.prototype.castSpell = function() {
-    console.log(`${this.name} создает заклинание: ${this.spellType}`);
-};
-
-Orc.prototype = Object.create(Character.prototype);
-Orc.prototype.constructor = Orc;
-
-Orc.prototype.attack = function() {
-    console.log(`${this.name} бьет ${this.weapon}`);
+    info() {
+        console.log(this.#_marka, this.#_model, this.#_probeg)
+    }
 }
