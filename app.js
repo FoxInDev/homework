@@ -1,13 +1,43 @@
-function goCheck(arr) {
-  let mySet = new Set();
-  let result = [];
+'use strict';
 
-  for (const obj of arr) {
-    if (!mySet.has(obj.id)) {
-      mySet.add(obj.id);
-      result.push(obj);
+class Personash {
+    constructor(rasa, name, language) {
+        this.rasa = rasa;
+        this.name = name;
+        this.language = language;
     }
-  }
 
-  return result;
+    tell() {
+        console.log('Hello!');
+    }
+}
+
+class Ork extends Personash {
+    constructor(rasa, name, language, weapon) {
+        super(rasa, name, language);
+        this.weapon = weapon;
+    }
+
+    hit() {
+        console.log(`hit!`);
+    }
+
+    tell() {
+        console.log(`Hello! I'm Ork xD!`);
+    }
+}
+
+class Elf extends Personash {
+    constructor(rasa, name, language, magia) {
+        super(rasa, name, language);
+        this.magia = magia;
+    }
+
+    createMagia() {
+        console.log(`Сто тыщ тадыщ перпл скул дай бесплатный курс по реакт появись!`);
+    }
+
+    tell() {
+        console.log(`Hello! I'm Elf)`);
+    }
 }
