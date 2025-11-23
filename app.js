@@ -13,7 +13,7 @@ class Personash {
 }
 
 class Ork extends Personash {
-    constructor(weapon) {
+    constructor(rasa, name, language, weapon) {
         super(rasa, name, language);
         this.weapon = weapon;
     }
@@ -28,7 +28,7 @@ class Ork extends Personash {
 }
 
 class Elf extends Personash {
-    constructor(magia) {
+    constructor(rasa, name, language, magia) {
         super(rasa, name, language);
         this.magia = magia;
     }
