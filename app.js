@@ -1,35 +1,43 @@
 'use strict';
 
-const Character = function(race, name, language) {
-    this.race = race;
-    this.name = name;
-    this.language = language;
+class Personash {
+    constructor(rasa, name, language) {
+        this.rasa = rasa;
+        this.name = name;
+        this.language = language;
+    }
+
+    tell() {
+        console.log('Hello!');
+    }
 }
 
-Character.prototype.speak = function() {
-    console.log(this.language, this.name);
+class Ork extends Personash {
+    constructor(weapon) {
+        super(rasa, name, language);
+        this.weapon = weapon;
+    }
+
+    hit() {
+        console.log(`hit!`);
+    }
+
+    tell() {
+        console.log(`Hello! I'm Ork xD!`);
+    }
 }
 
-const Orc = function(name, language, weapon) {
-    Character.call(this, 'Орк', name, language);
-    this.weapon = weapon;
-}
+class Elf extends Personash {
+    constructor(magia) {
+        super(rasa, name, language);
+        this.magia = magia;
+    }
 
-const Elf = function(name, language, spellType) {
-    Character.call(this, 'Эльф', name, language);
-    this.spellType = spellType;
-}
+    createMagia() {
+        console.log(`Сто тыщ тадыщ перпл скул дай бесплатный курс по реакт появись!`);
+    }
 
-Elf.prototype = Object.create(Character.prototype);
-Elf.prototype.constructor = Elf;
-
-Elf.prototype.castSpell = function() {
-    console.log(`${this.name} создает заклинание: ${this.spellType}`);
-};
-
-Orc.prototype = Object.create(Character.prototype);
-Orc.prototype.constructor = Orc;
-
-Orc.prototype.attack = function() {
-    console.log(`${this.name} бьет ${this.weapon}`);
+    tell() {
+        console.log(`Hello! I'm Elf)`);
+    }
 }
