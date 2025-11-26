@@ -1,13 +1,39 @@
-function goCheck(arr) {
-  let mySet = new Set();
-  let result = [];
+'use strict';
 
-  for (const obj of arr) {
-    if (!mySet.has(obj.id)) {
-      mySet.add(obj.id);
-      result.push(obj);
+class Billing {
+    constructor(amount) {
+        this.amount = amount;
     }
-  }
 
-  return result;
+    calculateTotal() {
+        return this.amount;
+    }
+}
+
+class FixedBilling extends Billing {
+    calculateTotal() {
+        return this.amount;
+    }
+}
+
+class HourBilling extends Billing {
+    constructor(amount, hours) {
+        super(amount);
+        this.hours = hours;
+    }
+
+    calculateTotal() {
+        return this.amount * this.hours;
+    }
+}
+
+class ItemBilling extends Billing {
+    constructor(amount, elements) {
+        super(amount);
+        this.elements = elements;
+    }
+
+    calculateTotal() {
+        return this.amount * this.elements;
+    }
 }
