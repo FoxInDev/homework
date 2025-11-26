@@ -1,43 +1,39 @@
 'use strict';
 
-class Personash {
-    constructor(rasa, name, language) {
-        this.rasa = rasa;
-        this.name = name;
-        this.language = language;
+class Billing {
+    constructor(amount) {
+        this.amount = amount;
     }
 
-    tell() {
-        console.log('Hello!');
+    calculateTotal() {
+        return this.amount;
     }
 }
 
-class Ork extends Personash {
-    constructor(rasa, name, language, weapon) {
-        super(rasa, name, language);
-        this.weapon = weapon;
-    }
-
-    hit() {
-        console.log(`hit!`);
-    }
-
-    tell() {
-        console.log(`Hello! I'm Ork xD!`);
+class FixedBilling extends Billing {
+    calculateTotal() {
+        return this.amount;
     }
 }
 
-class Elf extends Personash {
-    constructor(rasa, name, language, magia) {
-        super(rasa, name, language);
-        this.magia = magia;
+class HourBilling extends Billing {
+    constructor(amount, hours) {
+        super(amount);
+        this.hours = hours;
     }
 
-    createMagia() {
-        console.log(`Сто тыщ тадыщ перпл скул дай бесплатный курс по реакт появись!`);
+    calculateTotal() {
+        return this.amount * this.hours;
+    }
+}
+
+class ItemBilling extends Billing {
+    constructor(amount, elements) {
+        super(amount);
+        this.elements = elements;
     }
 
-    tell() {
-        console.log(`Hello! I'm Elf)`);
+    calculateTotal() {
+        return this.amount * this.elements;
     }
 }
