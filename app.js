@@ -1,39 +1,19 @@
 'use strict';
 
-class Billing {
-    constructor(amount) {
-        this.amount = amount;
-    }
+const req = new XMLHttpRequest();
+req.open('GET', 'https://pokeapi.co/api/v2/pokemon/ditto');
+req.send();
 
-    calculateTotal() {
-        return this.amount;
-    }
-}
+req.addEventListener("load", function() {
+    const { abilities } = JSON.parse(this.responseText);
+    // console.log(abilities[0].ability.url);
 
-class FixedBilling extends Billing {
-    calculateTotal() {
-        return this.amount;
-    }
-}
+    const req = new XMLHttpRequest();
+    req.open('GET', abilities[0].ability.url);
+    req.send();
 
-class HourBilling extends Billing {
-    constructor(amount, hours) {
-        super(amount);
-        this.hours = hours;
-    }
-
-    calculateTotal() {
-        return this.amount * this.hours;
-    }
-}
-
-class ItemBilling extends Billing {
-    constructor(amount, elements) {
-        super(amount);
-        this.elements = elements;
-    }
-
-    calculateTotal() {
-        return this.amount * this.elements;
-    }
-}
+    req.addEventListener('load', function() {
+        const { effect_entries } = JSON.parse(this.responseText);
+        console.log(effect_entries[0].effect);
+    });
+});
