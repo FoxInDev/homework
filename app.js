@@ -3,13 +3,13 @@
 const prom = new Promise((resolve, reject) => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-            resolve(position.coords.latitude, position.coords.longitude);
+            const coords = [position.coords.latitude, position.coords.longitude];
+            resolve(coords);
         })
     }
     else {
         reject(new Error('Ошибка получания координат'));
     }
-    reject(new Error('Произошла неизвестная ошибка'));
 })
 
 prom
