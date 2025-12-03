@@ -1,13 +1,17 @@
-function goCheck(arr) {
-  let mySet = new Set();
-  let result = [];
+'use strict';
 
-  for (const obj of arr) {
-    if (!mySet.has(obj.id)) {
-      mySet.add(obj.id);
-      result.push(obj);
+const prom = new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const coords = [position.coords.latitude, position.coords.longitude];
+            resolve(coords);
+        })
     }
-  }
+    else {
+        reject(new Error('Ошибка получания координат'));
+    }
+})
 
-  return result;
-}
+prom
+    .then(data => console.log(data))
+    .catch(err => console.error(err));
