@@ -1,13 +1,19 @@
-function goCheck(arr) {
-  let mySet = new Set();
-  let result = [];
+'use strict';
 
-  for (const obj of arr) {
-    if (!mySet.has(obj.id)) {
-      mySet.add(obj.id);
-      result.push(obj);
-    }
-  }
+function race(promises) {
+    return new Promise((res, rej) => {
+        if (!Array.isArray(promises)) {
+            return rej(new TypeError('Аргумент должен быть массивом'));
+        };
 
-  return result;
+        if (promises.length === 0) {
+            return;
+        };
+
+        promises.forEach(promise => {
+            Promise.resolve(promise)
+                .then(res)
+                .catch(rej);
+        });
+    })
 }
