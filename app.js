@@ -1,17 +1,19 @@
 'use strict';
 
-const prom = new Promise((resolve, reject) => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const coords = [position.coords.latitude, position.coords.longitude];
-            resolve(coords);
-        })
-    }
-    else {
-        reject(new Error('Ошибка получания координат'));
-    }
-})
+function race(promises) {
+    return new Promise((res, rej) => {
+        if (!Array.isArray(promises)) {
+            return rej(new TypeError('Аргумент должен быть массивом'));
+        };
 
-prom
-    .then(data => console.log(data))
-    .catch(err => console.error(err));
+        if (promises.length === 0) {
+            return;
+        };
+
+        promises.forEach(promise => {
+            Promise.resolve(promise)
+                .then(res)
+                .catch(rej);
+        });
+    })
+}
