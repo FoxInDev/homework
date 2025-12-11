@@ -1,13 +1,22 @@
-function goCheck(arr) {
-  let mySet = new Set();
-  let result = [];
+'use strict'
 
-  for (const obj of arr) {
-    if (!mySet.has(obj.id)) {
-      mySet.add(obj.id);
-      result.push(obj);
+document.addEventListener('DOMContentLoaded', () => {
+    const totalText = document.getElementById('our');
+    const btns = document.querySelector('.btns');
+
+    let used = 0;
+
+    for (let i = 0; i < btns.childElementCount; i++) {
+        btns.children[i].setAttribute('data-id', i);
     }
-  }
 
-  return result;
-}
+    btns.addEventListener('click', (e) => {
+        const numId = e.target.getAttribute('data-id');
+        for (let i = 0; i < btns.childElementCount; i++) {
+            btns.children[i].innerText = 'Нажми меня';
+        }
+        btns.children[numId].innerText = 'Нажата!';
+        used += 1;
+        totalText.innerHTML = used;
+    })
+})
