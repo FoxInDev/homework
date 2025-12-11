@@ -1,19 +1,19 @@
-'use strict';
+'use strict'
 
-function race(promises) {
-    return new Promise((res, rej) => {
-        if (!Array.isArray(promises)) {
-            return rej(new TypeError('Аргумент должен быть массивом'));
-        };
+document.addEventListener('DOMContentLoaded', () => {
+    const totalText = document.getElementById('our');
+    const btns = document.querySelector('.btns');
 
-        if (promises.length === 0) {
-            return;
-        };
+    let used = 0;
 
-        promises.forEach(promise => {
-            Promise.resolve(promise)
-                .then(res)
-                .catch(rej);
-        });
+    for (let i = 0; i < btns.childElementCount; i++) {
+        btns.children[i].setAttribute('data-id', i);
+    }
+
+    btns.addEventListener('click', (e) => {
+        const numId = e.target.getAttribute('data-id');
+        btns.children[numId].innerText = 'Нажата!';
+        used += 1;
+        totalText.innerHTML = used;
     })
-}
+})
