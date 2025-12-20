@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/FoxInDev/homework#readme",
   "devDependencies": {
+    "live-server": "^1.2.2",
     "rollup": "^4.54.0"
   }
 }
