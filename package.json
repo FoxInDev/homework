@@ -1,0 +1,25 @@
+{
+  "name": "project-hw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FoxInDev/homework.git"
+  },
+  "author": "Daniil Pavlov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FoxInDev/homework/issues"
+  },
+  "homepage": "https://github.com/FoxInDev/homework#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "rollup": "^4.54.0"
+  }
+}
